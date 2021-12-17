@@ -1,0 +1,14 @@
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\GradeHoraria.exe.config
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\GradeHoraria.exe
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\GradeHoraria.pdb
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.csproj.AssemblyReference.cache
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.Login.resources
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.F_CadastroProfessor.resources
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.F_CadastroSala.resources
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.Properties.Resources.resources
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.csproj.GenerateResource.cache
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.csproj.CoreCompileInputs.cache
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.exe
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.pdb
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.F_CadastroDisciplina.resources
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\obj\Debug\GradeHoraria.F_CadastroFPA.resources
