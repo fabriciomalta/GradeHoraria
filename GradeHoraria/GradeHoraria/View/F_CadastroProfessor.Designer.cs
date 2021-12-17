@@ -57,6 +57,7 @@ namespace GradeHoraria
             this.button2.TabIndex = 31;
             this.button2.Text = "Salvar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -164,28 +165,28 @@ namespace GradeHoraria
             // professorToolStripMenuItem
             // 
             this.professorToolStripMenuItem.Name = "professorToolStripMenuItem";
-            this.professorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.professorToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.professorToolStripMenuItem.Text = "Professor";
             this.professorToolStripMenuItem.Click += new System.EventHandler(this.professorToolStripMenuItem_Click);
             // 
             // salaToolStripMenuItem
             // 
             this.salaToolStripMenuItem.Name = "salaToolStripMenuItem";
-            this.salaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.salaToolStripMenuItem.Text = "Sala";
             this.salaToolStripMenuItem.Click += new System.EventHandler(this.salaToolStripMenuItem_Click);
             // 
             // dIsciplinaToolStripMenuItem
             // 
             this.dIsciplinaToolStripMenuItem.Name = "dIsciplinaToolStripMenuItem";
-            this.dIsciplinaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.dIsciplinaToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.dIsciplinaToolStripMenuItem.Text = "DIsciplina";
             this.dIsciplinaToolStripMenuItem.Click += new System.EventHandler(this.dIsciplinaToolStripMenuItem_Click);
             // 
             // fPAToolStripMenuItem
             // 
             this.fPAToolStripMenuItem.Name = "fPAToolStripMenuItem";
-            this.fPAToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fPAToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.fPAToolStripMenuItem.Text = "FPA";
             this.fPAToolStripMenuItem.Click += new System.EventHandler(this.fPAToolStripMenuItem_Click);
             // 

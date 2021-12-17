@@ -55,5 +55,10 @@ namespace GradeHoraria
             F_CadastroFPA f_CadastroFPA = new F_CadastroFPA();
             f_CadastroFPA.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
