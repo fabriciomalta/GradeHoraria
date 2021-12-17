@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace GradeHoraria.Model
 {
-    class M_Professor
+    class SalaModel
     {
+        public string NomeSala { get; set; }
+        public string SiglaSala { get; set; }
+        int Quantidade { get; set; }
+     
     }
 }
