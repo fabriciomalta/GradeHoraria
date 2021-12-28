@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,9 +34,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=27.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.27.2.1\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.0.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.0\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +84,22 @@
     <Compile Include="Model\DisciplinaModel.cs" />
     <Compile Include="Model\ProfessorModel.cs" />
     <Compile Include="Model\SalaModel.cs" />
-    <Compile Include="View\F_CadastroDisciplina.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Disciplina\F_CadastroDisciplina.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\F_CadastroDisciplina.Designer.cs">
+    <Compile Include="View\Disciplina\F_CadastroDisciplina.Designer.cs">
       <DependentUpon>F_CadastroDisciplina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\HomeDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HomeDashboard.Designer.cs">
+      <DependentUpon>HomeDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -62,51 +107,51 @@
     <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\F_CadastroFPA.cs">
+    <Compile Include="View\Professor\F_CadastroProfessor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\F_CadastroFPA.Designer.cs">
-      <DependentUpon>F_CadastroFPA.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\F_CadastroProfessor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\F_CadastroProfessor.Designer.cs">
+    <Compile Include="View\Professor\F_CadastroProfessor.Designer.cs">
       <DependentUpon>F_CadastroProfessor.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\F_CadastroSala.cs">
+    <Compile Include="View\Professor\ListagemProfessor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\F_CadastroSala.Designer.cs">
+    <Compile Include="View\Professor\ListagemProfessor.Designer.cs">
+      <DependentUpon>ListagemProfessor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Sala\F_CadastroSala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sala\F_CadastroSala.Designer.cs">
       <DependentUpon>F_CadastroSala.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="View\F_CadastroDisciplina.resx">
+    <EmbeddedResource Include="View\Disciplina\F_CadastroDisciplina.resx">
       <DependentUpon>F_CadastroDisciplina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HomeDashboard.resx">
+      <DependentUpon>HomeDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\F_CadastroFPA.resx">
-      <DependentUpon>F_CadastroFPA.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\F_CadastroProfessor.resx">
+    <EmbeddedResource Include="View\Professor\F_CadastroProfessor.resx">
       <DependentUpon>F_CadastroProfessor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\F_CadastroSala.resx">
+    <EmbeddedResource Include="View\Professor\ListagemProfessor.resx">
+      <DependentUpon>ListagemProfessor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sala\F_CadastroSala.resx">
       <DependentUpon>F_CadastroSala.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <None Include="connectionString.config" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,10 +163,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
+    <None Include="Resources\Indisponible.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
