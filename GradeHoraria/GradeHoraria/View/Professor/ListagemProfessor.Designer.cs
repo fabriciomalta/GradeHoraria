@@ -30,20 +30,21 @@ namespace GradeHoraria.View.Professor
         private void InitializeComponent()
         {
             this.dgvListaDados = new System.Windows.Forms.DataGridView();
-            this.btnConsultarLista = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.idprofessor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.professornome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.professorprontuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.professorarea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnConsultarLista = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaDados)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvListaDados
             // 
             this.dgvListaDados.AllowUserToAddRows = false;
+            this.dgvListaDados.AllowUserToDeleteRows = false;
             this.dgvListaDados.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvListaDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListaDados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -53,9 +54,43 @@ namespace GradeHoraria.View.Professor
             this.professorarea});
             this.dgvListaDados.Location = new System.Drawing.Point(12, 65);
             this.dgvListaDados.Name = "dgvListaDados";
+            this.dgvListaDados.ReadOnly = true;
             this.dgvListaDados.RowHeadersVisible = false;
+            this.dgvListaDados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvListaDados.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvListaDados.Size = new System.Drawing.Size(775, 281);
             this.dgvListaDados.TabIndex = 2;
+            this.dgvListaDados.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaDados_CellClick);
+            // 
+            // idprofessor
+            // 
+            this.idprofessor.HeaderText = "Código";
+            this.idprofessor.MinimumWidth = 8;
+            this.idprofessor.Name = "idprofessor";
+            this.idprofessor.ReadOnly = true;
+            this.idprofessor.Width = 50;
+            // 
+            // professornome
+            // 
+            this.professornome.FillWeight = 150F;
+            this.professornome.HeaderText = "Nome";
+            this.professornome.Name = "professornome";
+            this.professornome.ReadOnly = true;
+            this.professornome.Width = 300;
+            // 
+            // professorprontuario
+            // 
+            this.professorprontuario.HeaderText = "Prontuário";
+            this.professorprontuario.Name = "professorprontuario";
+            this.professorprontuario.ReadOnly = true;
+            this.professorprontuario.Width = 300;
+            // 
+            // professorarea
+            // 
+            this.professorarea.HeaderText = "Área";
+            this.professorarea.Name = "professorarea";
+            this.professorarea.ReadOnly = true;
+            this.professorarea.Width = 120;
             // 
             // btnConsultarLista
             // 
@@ -93,32 +128,6 @@ namespace GradeHoraria.View.Professor
             this.button1.Text = "Pesquisar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // idprofessor
-            // 
-            this.idprofessor.HeaderText = "Código";
-            this.idprofessor.MinimumWidth = 8;
-            this.idprofessor.Name = "idprofessor";
-            this.idprofessor.Width = 50;
-            // 
-            // professornome
-            // 
-            this.professornome.FillWeight = 150F;
-            this.professornome.HeaderText = "Nome";
-            this.professornome.Name = "professornome";
-            this.professornome.Width = 300;
-            // 
-            // professorprontuario
-            // 
-            this.professorprontuario.HeaderText = "Prontuário";
-            this.professorprontuario.Name = "professorprontuario";
-            this.professorprontuario.Width = 300;
-            // 
-            // professorarea
-            // 
-            this.professorarea.HeaderText = "Área";
-            this.professorarea.Name = "professorarea";
-            this.professorarea.Width = 120;
             // 
             // ListagemProfessor
             // 

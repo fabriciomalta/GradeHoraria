@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.IO;
 using CsvHelper;
+using ExcelDataReader;
 
 namespace GradeHoraria
 {
@@ -72,7 +73,7 @@ namespace GradeHoraria
             professor.NomeProfessor = tb_nomeprofessor.Text;
             professor.Prontuário = tb_prontuario.Text;
             professor.Area = tb_area.Text;
-
+            MySqlDataReader objDados;
             try
             {
                 string strSQL = "insert into tb_professor( NOME_PROFESSOR, PRONTUARIO, AREA) values(";
@@ -80,12 +81,40 @@ namespace GradeHoraria
                 strSQL += "'" + professor.Prontuário + "',";
                 strSQL += "'" + professor.Area + "')";
 
-
                 objCommand.Connection = objConexao;
                 objCommand.CommandText = strSQL;
-                objCommand.ExecuteNonQuery();
 
+                objCommand.ExecuteNonQuery();
+                
+                //OBTER O ID DO PROFESSOR QUE ACABOU DE SER INSERIDO
+                
+                string strSQL3 = "select id_professor from tb_professor where PRONTUARIO =" + professor.Prontuário + "  LIMIT 1 ";
+                objCommand.CommandText = strSQL3;
+                objDados = objCommand.ExecuteReader();
+                
+
+                int idprofessor = 0 ;
+                if (objDados.Read())
+                {
+                     idprofessor = Convert.ToInt32(objDados["id_professor"].ToString());
+                }
+                objConexao.Close();
+                objConexao.Open();
+                string strSQL4 = "select id_professor from tb_horarios where ID_PROFESSOR =" + idprofessor;
+                objCommand.CommandText = strSQL4;
+                objDados = objCommand.ExecuteReader();
+                objDados.Read();
+                if (!objDados.HasRows)
+                {
+                    criahorario(idprofessor, 0);
+                }
+                else
+                {
+                    criahorario(idprofessor, 1);
+                }
+                //select* count from tb_professor where ID_PROFESSOR =
                 MessageBox.Show("Professor Registrado com sucesso!");
+                this.Close();
             }
             catch (Exception erro)
             {
@@ -93,12 +122,150 @@ namespace GradeHoraria
             }
         }
 
+        private void criahorario(int idprofessor, int method)
+        {
+            int[] horarios = new int[90];
+            int flag;
+            for (int i = 0; i <=89; i++)
+            {
+                PictureBox leitura;
+                flag = i + 1;
+                leitura = (PictureBox)this.Controls.Find("pcbfpa" + flag, true).First();
+                if(leitura.Size == pcbdisp.Size)
+                {
+                    horarios[i] = 1;
+                }
+                else
+                {
+                    horarios[i] = 0;
+                }
+            }
+
+
+            if (method == 0)
+            {
+                try
+                {
+                    //CASO NÃO TENHA REGISTRO DO PROFESSOR NA TABELA HORÁRIOS, IREMOS INSERIR
+                    string concatenatesql = "";
+
+                    string strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+
+                    for (int i = 0; i < 15; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "SEGUNDA" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    concatenatesql = "";
+                    ////////////////////////////////////////////////////////////////
+                    objCommand.CommandText = strSQL;
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+
+                    strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+
+                    for (int i = 15; i < 30; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "TERCA" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    concatenatesql = "";
+                    objCommand.CommandText = strSQL;
+                    ////////////////////////////////////////////////////////////////
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+
+                    strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+
+                    for (int i = 30; i < 45; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "QUARTA" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    concatenatesql = "";
+                    ////////////////////////////////////////////////////////////////
+                    ///
+                    objCommand.CommandText = strSQL;
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+
+                    strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+                    for (int i = 45; i < 60; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "QUINTA" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    concatenatesql = "";
+                    ////////////////////////////////////////////////////////////////
+                    objCommand.CommandText = strSQL;
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+
+                    strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+                    for (int i = 60; i < 75; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "SEXTA" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    concatenatesql = "";
+                    ////////////////////////////////////////////////////////////////
+                    objCommand.CommandText = strSQL;
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+
+                    strSQL = "insert into tb_horarios( M1,M2,M3,M4,M5,M6,T1,T2,T3,T4,N1,N2,N3,N4,N5,DIAS_SEMANA,ID_PROFESSOR,ID_CURSO)values(";
+                    for (int i = 75; i < 90; i++)
+                    {
+                        concatenatesql += "'" + horarios[i] + "',";
+                    }
+                    strSQL += concatenatesql;
+                    strSQL += "'" + "SABADO" + "',";
+                    strSQL += "'" + idprofessor + "',";
+                    strSQL += "'" + "0" + "')";
+                    objCommand.CommandText = strSQL;
+                    objConexao.Close();
+                    objConexao.Open();
+                    objCommand.ExecuteNonQuery();
+                }
+                catch (Exception erro)
+                {
+                    MessageBox.Show(erro.Message, "Erro inserção FPA");
+                }
+                
+            }
+            else
+            {
+
+            }
+        }
+
+
         private void textBox5_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void F_CadastroProfessor_Load(object sender, EventArgs e)
+        private void abrirconexao()
         {
             try
             {
@@ -110,6 +277,10 @@ namespace GradeHoraria
                 MessageBox.Show(erro.Message, "Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 objConexao.Close();
             }
+        }
+        private void F_CadastroProfessor_Load(object sender, EventArgs e)
+        {
+            abrirconexao();
         }
 
         private void label33_Click(object sender, EventArgs e)
@@ -134,7 +305,7 @@ namespace GradeHoraria
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            
+
 
             if (pcbdisp.ImageLocation.Equals(pcbdisp.ImageLocation))
             {
@@ -145,7 +316,7 @@ namespace GradeHoraria
         private void pcbdisp_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Convert.ToString(pcbdisp.Image));
-            
+
         }
 
         private void pictureBox28_Click(object sender, EventArgs e)
@@ -155,7 +326,7 @@ namespace GradeHoraria
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            if(pcbdisp.Image == pcbdisp.Image){
+            if (pcbdisp.Image == pcbdisp.Image) {
                 pcbdisp.Image = pcbindisp.Image;
                 indicador = 1;
             }
@@ -173,7 +344,7 @@ namespace GradeHoraria
 
         private void pictureBox77_Click(object sender, EventArgs e)
         {
-            
+
             inverterobjeto(pcbfpa1);
         }
 
@@ -193,10 +364,10 @@ namespace GradeHoraria
 
         private void pictureBox70_Click(object sender, EventArgs e)
         {
-
+            inverterobjeto(pcbfpa46);
         }
 
-        private void btnuploadFPA_Click(object sender, EventArgs e)
+        private void backuplixo()
         {
             var FD = new System.Windows.Forms.OpenFileDialog();
             if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -212,8 +383,188 @@ namespace GradeHoraria
                 var csv = new CsvReader(reader, System.Globalization.CultureInfo.InvariantCulture);
                 var records = csv.GetRecords<LeituraFPA>();
             }
+        }
+
+        DataTableCollection dataTableCollection;
+        DataTable dt;
+        private void btnuploadFPA_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Excel Workbook|*.xlsx|Excel 97-2003 Workbook|*.xls" })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    //lblfpa.Text = ofd.FileName;
+                    using (var stream = File.Open(ofd.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        using (IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            DataSet result = reader.AsDataSet(new ExcelDataSetConfiguration()
+                            {
+                                ConfigureDataTable = (_) => new ExcelDataTableConfiguration() { UseHeaderRow = true }
+                            });
+                            dataTableCollection = result.Tables;
+
+                            //foreach (DataTable table in dataTableCollection)
+                            //{
+
+                            //}
+                            //cboData.DataSource = null;
+                            //cboSheet.Items.Clear();
+                            List<string> diasSegunda = new List<string>();
+                            List<string> diasTerca = new List<string>();
+                            List<string> diasQua = new List<string>();
+                            List<string> diasQui = new List<string>();
+                            List<string> diasSexta = new List<string>();
+                            List<string> diasSab = new List<string>();
+
+                            //jose = dataTableCollection.Cast<DataTable>().Select(t => t.tableName).ToArray<string>();
+                            //jose = dataTableCollection[0].Rows[15]["Column8"].ToString();
+                            for (int i = 16; i <= 36; i++)
+                            {
+                                diasSegunda.Add(dataTableCollection[0].Rows[i]["Column8"].ToString());
+                                diasTerca.Add(dataTableCollection[0].Rows[i]["Column12"].ToString());
+                                diasQua.Add(dataTableCollection[0].Rows[i]["Column16"].ToString());
+                                diasQui.Add(dataTableCollection[0].Rows[i]["Column20"].ToString());
+                                diasSexta.Add(dataTableCollection[0].Rows[i]["Column24"].ToString());
+                                diasSab.Add(dataTableCollection[0].Rows[i]["Column28"].ToString());
+                            }
+                            AtualizaVisual(diasSegunda, diasTerca, diasQua, diasQui, diasSexta, diasSab);
+                            //MessageBox.Show("Oi");
+                            //cboSheet.Items.AddRange(dataTableCollection.Cast<DataTable>()
+                            //  .Select(t => t.TableName).ToArray<string>());
+                        }
+                    }
+                }
+            }
+        }
+
+        private void attdia(int oi)
+        {
+            PictureBox leitura;
+            leitura = (PictureBox)this.Controls.Find("pcbfpa" + oi, true).First();
+            leitura.Image = pcbdisp.Image;
+            leitura.Size = pcbdisp.Size;
+        }
+        private void AtualizaVisual(List<string> diasSegunda, List<string> diasTerca, 
+                                    List<string> diasQua, List<string> diasQui, 
+                                    List<string> diasSexta, List<string> diasSab)
+        {
+            //leituraColumn(0, 5);
+            //leituraColumn(0, 3);
+            //leituraColumn(0, 5);
+            //ATUALIZAR MANHÃ
+            int oi = 0;
+            for (int i = 0; i <= 5; i++)
+            {
+                if (diasSegunda[i].Equals('X'))
+                {
+                    oi = i;
+                    attdia(oi);
+                }
+                if (diasTerca[i]=="X")
+                {                                      
+                    oi = i + 16;
+                    attdia(oi);
+                }
+                if (diasQua[i] == "X")
+                {
+                    oi = i + 31;
+                    attdia(oi);
+                }
+                if (diasQui[i] == "X")
+                {
+                    oi = i + 46;
+                    attdia(oi);
+                }
+                if (diasSexta[i] == "X")
+                {
+                    oi = i + 61;
+                    attdia(oi);
+                }
+                if (diasSab[i] == "X")
+                {
+                    oi = i + 76;
+                    attdia(oi);
+                }
+            }
+            //ATUALIZAR TARDE
+            for (int i = 0; i <= 3; i++)
+            {
+                if (diasSegunda[i + 10].Equals('X'))
+                {
+                    oi = i+7;
+                    attdia(oi);
+                }
+                if (diasTerca[i + 10] == "X")
+                {
+                    oi = i + 22;
+                    attdia(oi);
+                }
+                if (diasQua[i + 10] == "X")
+                {
+                    oi = i + 37;
+                    attdia(oi);
+                }
+                if (diasQui[i + 10] == "X")
+                {
+                    oi = i + 52;
+                    attdia(oi);
+                }
+                if (diasSexta[i + 10] == "X")
+                {
+                    oi = i + 67;
+                    attdia(oi);
+                }
+                if (diasSab[i + 10] == "X")
+                {
+                    oi = i + 82;
+                    attdia(oi);
+                }
+            }
+            //ATUALIZAR NOITE
+            for (int i = 0; i <= 4; i++)
+            {
+                if (diasSegunda[i+16].Equals('X'))
+                {
+                    oi = i + 11;
+                    attdia(oi);
+                }
+                if (diasTerca[i + 16] == "X")
+                {
+                    oi = i + 26;
+                    attdia(oi);
+                }
+                if (diasQua[i + 16] == "X")
+                {
+                    oi = i + 41;
+                    attdia(oi);
+                }
+                if (diasQui[i + 16] == "X")
+                {
+                    oi = i + 56;
+                    attdia(oi);
+                }
+                if (diasSexta[i + 16] == "X")
+                {
+                    oi = i + 71;
+                    attdia(oi);
+                }
+                if (diasSab[i + 16] == "X")
+                {
+                    oi = i + 86;
+                    attdia(oi);
+                }
+            }
+        }
+
+        private void leituraColumn(int inicio, int fim) {
+            for (int i = inicio; i <= fim; i++)
+            {
+
+            }
 
         }
+
         public class LeituraFPA
         {
             public int Id { get; set; }

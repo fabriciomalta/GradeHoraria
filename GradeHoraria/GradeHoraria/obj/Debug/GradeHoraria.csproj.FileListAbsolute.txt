@@ -42,3 +42,9 @@ C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug
 C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.DataSet.dll
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.dll
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.pdb
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.xml
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.DataSet.pdb
+C:\Users\luiz9\Documents\GitHub\GradeHoraria\GradeHoraria\GradeHoraria\bin\Debug\ExcelDataReader.DataSet.xml

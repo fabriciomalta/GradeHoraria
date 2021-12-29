@@ -18,7 +18,7 @@ namespace GradeHoraria
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new F_CadastroSala());
-            Application.Run(new F_CadastroProfessor());
+            Application.Run(new ListagemProfessor());
         }
     }
 }

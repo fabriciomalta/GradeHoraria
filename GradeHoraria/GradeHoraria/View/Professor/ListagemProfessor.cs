@@ -71,5 +71,10 @@ namespace GradeHoraria.View.Professor
                 MessageBox.Show(erro.Message, "Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void dgvListaDados_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
